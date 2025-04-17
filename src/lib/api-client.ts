@@ -31,12 +31,12 @@ api.interceptors.response.use(
   (error) => {
     const message = error.response?.data?.message || error.message;
 
-    if (error.response?.status === 401) {
-      const searchParams = new URLSearchParams();
-      const redirectTo =
-        searchParams.get("redirectTo") || window.location.pathname;
-      window.location.href = pahts.auth.login.getHref(redirectTo);
-    }
+    // if (error.response?.status === 401) {
+    //   const searchParams = new URLSearchParams();
+    //   const redirectTo =
+    //     searchParams.get("redirectTo") || window.location.pathname;
+    //   window.location.href = pahts.auth.login.getHref(redirectTo);
+    // }
 
     return Promise.reject(error);
   }

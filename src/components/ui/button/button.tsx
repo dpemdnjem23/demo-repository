@@ -7,7 +7,9 @@ import { cn } from "@/utils/cn";
 import { Spinner } from "../spinner";
 
 import styles from "./button.module.css";
-
+//cva Tailwind CSS 클래스를 **"변형(variant)"과 "조합"**을 기반으로 구성할 수 있게 도와주는 유틸리티입니다.
+//특히 버튼, 배지 등 다양한 스타일 변형이 필요한 컴포넌트에 유용하다.
+//이 값을 설정한것을 토대로
 const buttonVariants = cva(styles.base, {
   variants: {
     variant: {
@@ -30,6 +32,8 @@ const buttonVariants = cva(styles.base, {
     size: "default",
   },
 });
+
+//storybook에 서 controls 요소
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants> & {
@@ -64,7 +68,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {isLoading && <Spinner size="sm" className={styles.spinner} />}
         {!isLoading && icon && <span className="mr-2">{icon}</span>}
-        <span className="mx-2">{children}</span>
+        <span className={cn("mx-2", className)}>{children}</span>
       </Comp>
     );
   }

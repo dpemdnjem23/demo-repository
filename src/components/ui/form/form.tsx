@@ -12,7 +12,6 @@ import {
   ControllerProps,
   FieldPath,
   FieldValues,
-  FormProps,
   FormProvider,
   SubmitHandler,
   UseFormProps,
@@ -21,12 +20,9 @@ import {
   useFormContext,
 } from "react-hook-form";
 
-import { useSelector } from "react-redux";
-import { RootState } from "@/store"; // store.ts 에서 타입 추출했을 경우
 import { Label } from "./label";
 
 import { ZodType, z } from "zod";
-import styles from "./css/form.module.css";
 import { cn } from "@/utils/cn";
 
 // . 제네릭 타입 파라미터
@@ -82,7 +78,7 @@ const FormItem = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
-  return <div ref={ref} className={cn("form-item", className)} {...props} />;
+  return <div ref={ref} className={cn("space-y-2", className)} {...props} />;
 });
 FormItem.displayName = "FormItem";
 
@@ -205,11 +201,17 @@ const Form = <
   id,
   schema,
 }: FormProps<TFormValues, Schema>) => {
-  const form = useForm({ ...options, resolver: zodResolver(schema) });
+  const form = useForm({
+    ...options,
+    resolver: zodResolver(schema),
+  });
+  console.log(id, "form");
+
   return (
     <FormProvider {...form}>
       <form
-        className={cn("form", className)}
+        noValidate
+        className={cn("space-y-6", className)}
         onSubmit={form.handleSubmit(onSubmit)}
         id={id}
       >

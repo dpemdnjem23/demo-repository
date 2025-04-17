@@ -2,23 +2,33 @@
 
 import { useState } from "react";
 import { Flex, Text, Button } from "@radix-ui/themes";
+import {
+  BrowserRouter,
+  Link,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { FormField, FormLabel } from "./components/ui/form/form";
+import { Form, FormField, FormLabel } from "./components/ui/form/form";
 import {
   ControllerRenderProps,
   FieldValues,
   ControllerFieldState,
   UseFormStateReturn,
+  UseFormReturn,
 } from "react-hook-form";
+import { SignIn } from "./pages/auth/SignIn";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
+      {" "}
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -39,10 +49,13 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <Button>Let'sgo</Button>
-      <FormLabel></FormLabel>
+      <Button>
+        <Link to="/login">로그인페이지</Link>
+      </Button>
+      <Button>
+        <Link to="/authEntry">로그인진입페이지</Link>
+      </Button>
     </>
   );
 }
-
 export default App;

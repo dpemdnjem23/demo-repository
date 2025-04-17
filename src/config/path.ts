@@ -7,4 +7,23 @@ export const paths = {
     path: "/",
     getHref: () => "/",
   },
+
+  auth: {
+    register: {
+      path: "/register",
+      getHref: (redirectTo?: string | null | undefined) =>
+        `/register${redirectTo ? `?redirectTo=${encodeURIComponent(redirectTo)}` : ""}`,
+    },
+    login: {
+      path: "/login",
+      getHref: (redirectTo?: string | null | undefined) =>
+        `/login${redirectTo ? `?redirectTo=${encodeURIComponent(redirectTo)}` : ""}`,
+    },
+
+    entry: {
+      path: "/authEntry",
+      getHref: (redirectTo?: string | null | undefined) =>
+        `/authEntry${redirectTo ? `?redirectTo=${encodeURIComponent(redirectTo)}` : ""}`,
+    },
+  },
 };
