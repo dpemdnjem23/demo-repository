@@ -7,7 +7,7 @@ import { paths } from "@/config/path";
 import { SignIn } from "@/pages/auth/SignIn";
 import { AuthEntry } from "@/pages/auth/AuthEntry";
 
-const SignInRoute = () => {
+const AuthEntryRoute = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const redirectTo = searchParams.get("redirectTo");
@@ -19,4 +19,4 @@ const SignInRoute = () => {
   );
 };
 
-export default SignInRoute;
+export default AuthEntryRoute;
